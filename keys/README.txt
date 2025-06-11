@@ -1,0 +1,1 @@
+Поместите сюда private_key.pem и public_cert.pem

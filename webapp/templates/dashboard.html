@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100 text-center shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Подписать XML</h5>
+          <p class="card-text flex-grow-1">Загрузите исходный файл и получите подписанный документ.</p>
+          <a href="{{ url_for('sign_view') }}" class="btn btn-success mt-auto">Перейти</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 text-center shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Проверить подпись</h5>
+          <p class="card-text flex-grow-1">Проверьте корректность цифровой подписи XML‑документа.</p>
+          <a href="{{ url_for('verify_view') }}" class="btn btn-warning mt-auto">Перейти</a>
+        </div>
+      </div>
+    </div>
+    {% if user.role == 'admin' %}
+    <div class="col-md-4">
+      <div class="card h-100 text-center shadow-sm border-primary">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Администрирование</h5>
+          <p class="card-text flex-grow-1">Управление пользователями и ключами.</p>
+          <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary mt-auto">Открыть</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+{% endblock %}

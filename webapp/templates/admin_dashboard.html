@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <h3 class="mb-4">Административная панель</h3>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Управление ключами</h5>
+          <p class="card-text flex-grow-1">Просмотр и загрузка PEM‑файлов.</p>
+          <a href="{{ url_for('admin_keys') }}" class="btn btn-outline-primary mt-auto">Открыть</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Управление пользователями</h5>
+          <p class="card-text flex-grow-1">Добавление и смена паролей.</p>
+          <a href="{{ url_for('admin_users') }}" class="btn btn-outline-primary mt-auto">Открыть</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

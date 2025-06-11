@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <h3 class="mb-3">Пользователи</h3>
+  <form method="post" class="card p-4 shadow-sm mb-4">
+    <h5 class="mb-3">Добавить нового пользователя</h5>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <input class="form-control" type="text" name="new_username" placeholder="Логин" required>
+      </div>
+      <div class="col-md-4">
+        <input class="form-control" type="password" name="new_password" placeholder="Пароль" required>
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" name="new_role">
+          <option value="user" selected>user</option>
+          <option value="admin">admin</option>
+        </select>
+      </div>
+      <div class="col-md-1 d-grid">
+        <button class="btn btn-success" type="submit" name="action" value="add">+</button>
+      </div>
+    </div>
+  </form>
+
+  <h5 class="mb-2">Существующие пользователи</h5>
+  <table class="table table-bordered table-sm align-middle">
+    <thead class="table-light"><tr><th>ID</th><th>Логин</th><th>Роль</th><th>Сброс пароля</th></tr></thead>
+    <tbody>
+      {% for u in users %}
+      <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.role }}</td>
+        <td>
+          <form method="post" class="d-flex gap-2">
+            <input type="hidden" name="uid" value="{{ u.id }}">
+            <input class="form-control form-control-sm" type="password" name="new_pass" placeholder="Новый пароль" required>
+            <button class="btn btn-outline-primary btn-sm" type="submit" name="action" value="reset">OK</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
